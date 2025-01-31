@@ -91,6 +91,8 @@ header nav {
 
     margin-right: 1em;
     transition: .75s all ease;
+
+    z-index: 99;
 }
 #menuBtn:hover {
     cursor: pointer;
