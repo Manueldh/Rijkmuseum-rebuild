@@ -8,8 +8,8 @@ function toggleMenu() {
     document.querySelector('body').classList.toggle('menuopen')
 
     if (navOverlay.classList.contains('visible')) {
-        menuBtn.style.backgroundImage = "url('../images/close.svg')";
+        menuBtn.style.backgroundImage = "url(../images/close.svg)";
     } else {
-        menuBtn.style.backgroundImage = "url('../images/menu.svg')";
+        menuBtn.style.backgroundImage = "url(../images/menu.svg)";
     }
 }
