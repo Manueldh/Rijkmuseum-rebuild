@@ -26,6 +26,7 @@ body {
     font-family: "Rijksmuseum", Arial, sans-serif;
     font-size: calc(1rem + .125 * ((100vw - 20rem) / 100));
     line-height: 1.375;
+    overflow-x: hidden;
 }
 
 button:hover {
@@ -122,7 +123,7 @@ header a {
     padding: 1em;
     position: relative;
 }
-header span {
+header span, footer span {
     background-image: linear-gradient(currentColor,currentColor);
     background-repeat: no-repeat;
     background-color: transparent;
@@ -131,7 +132,7 @@ header span {
 
     transition: .5s all ease;
 }
-header a:hover span{
+header a:hover span, footer a:hover span{
     background-size: 100% 1px;
 }
 header button:hover span {
@@ -174,10 +175,8 @@ header button:hover span {
     left: 0;
     display: flex;
     width: 100vw;
-    min-height: 100vh;
+    height: 100%;
     z-index: 5; 
-
-    overflow-y: scroll !important;
 
     visibility: hidden;
     opacity: 0;
@@ -299,7 +298,7 @@ header button:hover span {
     width: 100vw;
 }
 .menu-open-logo img {
-    width: 90vw;
+    width: 85vw;
 }
 
 .sponsors-menu-open-container{
@@ -313,24 +312,24 @@ header button:hover span {
     flex-wrap: wrap;
 }
 
-.sponsors-menu-open {
+.sponsors-logo {
     min-width: 49%;
     width: auto !important;
     margin-bottom: 1.25em;
 }
-.sponsors-menu-open p{
+.sponsors-logo p{
     color: white;
     font-size: .75em;
     margin-bottom: 8px;
 }
-.sponsors-menu-open div {
+.sponsors-logo div {
     display: flex;
     gap: 1em;
 }
-.sponsors-menu-open:first-of-type img{
+.sponsors-logo:first-of-type img{
     height: 50px;
 }
-.sponsors-menu-open img {
+.sponsors-logo img {
     height: 25px;
 }
 
@@ -396,6 +395,19 @@ header button:hover span {
          justify-content: end;
          padding-bottom: 0;
          padding-top: 90px;
+
+        display: block; 
+        height: 100vh;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        overflow-y: scroll;
+        overflow-x: hidden;
+     }
+     .menu-open-left > :not(:last-child) {
+        margin-bottom: 3em;
      }
      .menu-open-quicklinks {
          display: flex;
@@ -413,6 +425,9 @@ header button:hover span {
      .header-menu-utility li:not(:last-of-type){
          display: none;
      }
+     .menu-open-quicklinks {
+        margin-top: 2em;
+     }
   }
  
  @media only screen and (min-width: 1280px) {
@@ -427,17 +442,167 @@ header button:hover span {
     }
 }
 
+/* FOOTER */
+
+footer {
+    background-color: #000101;
+    color: #c2ccce;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 3em;
+
+    padding: 5em 5.5vw;
+}
+
+footer h2 {
+    color: white;
+}
+
+footer > * {
+    width: 100%;
+}
+
+.footer-links li{
+    margin-bottom: 1em;
+}
+
+footer img {
+    height: 50px;
+}
+
+.text-big {
+    color: #c2ccce;
+    font-size: calc(1.188rem + .25 * ((100vw - 20rem) / 100));
+}
+
+.footer-buttons-section {
+    display: flex;
+    gap: 1em;
+}
+    .footer-buttons-section img {
+        opacity: 0.6;
+    }
+
+    .footer-buttons-section div:first-of-type {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .footer-buttons-section a {
+        padding: 1em 3em;
+        background-color: #333333;
+        border-radius: 2px;
+        transition: all .75s ease;
+    }
+    .footer-buttons-section a:hover {
+        background-color: white;
+        color: black;
+    }
+
+.sponsors-footer {
+    width: 100vw;
+    padding: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    opacity: .75;
+}
+
+.social-media-footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 2em;
+}
+    .social-media-footer img {
+        height: 25px;
+    }
+
+.footer-extra-links ul{
+    display: flex;
+    flex-wrap: wrap;
+    opacity: .75;
+}
+    .footer-extra-links ul li {
+        white-space: nowrap;
+        padding-right: .5em;
+        padding-bottom: 1em;
+    }
+    .footer-extra-links ul li:not(:last-of-type)::after {
+        content: '|';
+        padding-left: .5em;
+    }
+
+
+@media only screen and (min-width: 768px) { 
+    footer {
+        gap: 0;
+        padding: 4em 5.5vw;
+    }
+        footer > * {
+            margin-bottom: 2em;
+        }
+    .footer-info {
+        margin-bottom: 3em;
+    }
+    .footer-links, .button-section-container {
+        min-width: 49%;
+        width: auto !important;
+    }
+    .sponsors-footer {
+        gap: 3em;
+    }
+    .sponsors-logo {
+        min-width: 0;
+    }
+}
+@media only screen and (min-width: 1280px) {
+    .sponsors-footer, .footer-extra-links {
+        min-width: 49%;
+        width: auto;
+    }
+    .footer-extra-links {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+    .footer-info {
+        min-width: 50%;
+        width: auto;
+    }
+    .footer-links, .button-section-container {
+        min-width: 25%;
+        width: auto;
+    }
+}
 
 
 /* MAIN CONTENT HOMEPAGE */
 
-.home-first-section {
+.home-full-block-section {
     position: relative;
     width: 100%;
     height: 100vh;
 }
 
-.home-first-section::before {
+.home-full-block-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/collectie-online.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease;
+    z-index: -1;
+}
+
+.home-full-block-section:nth-of-type(1)::before {
     content: '';
     position: absolute;
     top: 0;
@@ -452,11 +617,11 @@ header button:hover span {
     z-index: -1;
 }
 
-.home-first-section:hover::before {
+.home-full-block-section:hover::before {
     transform: scale(1.02);
 }
 
-.home-first-section a{
+.home-full-block-section a{
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -467,7 +632,7 @@ header button:hover span {
 
     background-image: linear-gradient(180deg,transparent 50%,rgba(32,35,39,.9));
 }
-.home-first-section:hover{
+.home-full-block-section:hover{
     background-size: 110%;
 }
 
